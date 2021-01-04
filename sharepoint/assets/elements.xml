@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <CustomAction
+        Title="HideApprovalControls"
+        Location="ClientSideExtension.ApplicationCustomizer"
+        ClientSideComponentId="f46883c1-6ecb-4127-b8f3-76ffdc93fcda"
+        ClientSideComponentProperties="{&quot;testMessage&quot;:&quot;Test message&quot;}">
+    </CustomAction>
+</Elements>
