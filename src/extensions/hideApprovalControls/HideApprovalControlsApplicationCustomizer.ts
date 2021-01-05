@@ -1,7 +1,9 @@
 import { override } from '@microsoft/decorators';
 import { Log } from '@microsoft/sp-core-library';
 import {
-  BaseApplicationCustomizer
+  BaseApplicationCustomizer,
+  PlaceholderName,
+  PlaceholderContent
 } from '@microsoft/sp-application-base';
 import { Dialog } from '@microsoft/sp-dialog';
 
@@ -9,43 +11,47 @@ import * as strings from 'HideApprovalControlsApplicationCustomizerStrings';
 
 const LOG_SOURCE: string = 'HideApprovalControlsApplicationCustomizer';
 
-/**
- * If your command set uses the ClientSideComponentProperties JSON input,
- * it will be deserialized into the BaseExtension.properties object.
- * You can define an interface to describe it.
- */
 export interface IHideApprovalControlsApplicationCustomizerProperties {
-  // This is an example; replace with your own property
-  testMessage: string;
+  debugMessage: string;
 }
 
-/** A Custom Action which can be run during execution of a Client Side Application */
 export default class HideApprovalControlsApplicationCustomizer
   extends BaseApplicationCustomizer<IHideApprovalControlsApplicationCustomizerProperties> {
+  
+  private _topPlaceholder: PlaceholderContent | undefined;
 
   @override
   public onInit(): Promise<void> {
-    Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
+    Log.info(LOG_SOURCE, `Initialized ${strings.Title}. Version is ${this.manifest.version}`);
 
-    let message: string = this.properties.testMessage;
-    if (!message) {
-      message = '(No properties were provided.)';
-    }
+    // Comment in for debugging
+    // let message: string = this.properties.debugMessage;
+    // Dialog.alert(`Debug ${strings.Title}:\n\n${message}`);
 
-    Dialog.alert(`Hello from ${strings.Title}:\n\n${message}`);
+    // Wait for the placeholders to be created (or handle them being changed) and then
+    // render.
+    this.context.placeholderProvider.changedEvent.add(this, this._renderPlaceHolders);
 
-    var style = document.createElement('style');
-    style.innerHTML =
-      'button[name="Approve/Reject"] {' +
-        'display: none;' +
-      '}';
-    var ref = document.querySelector('script');
-    ref.parentNode.insertBefore(style, ref);
-
-    /* let approveRejectButton: Element = document.getElementsByName('Approve/Reject')[0];
-    if (approveRejectButton !== null) 
-      approveRejectButton.setAttribute('display', 'none'); */
-   
     return Promise.resolve();
   }
+
+  private _renderPlaceHolders(): void {
+    // Handling the top placeholder
+    if (!this._topPlaceholder) {
+      this._topPlaceholder = this.context.placeholderProvider.tryCreateContent(
+        PlaceholderName.Top
+      );
+  
+      // The extension should not assume that the expected placeholder is available.
+      if (!this._topPlaceholder) {
+        console.error("The expected placeholder (Top) was not found.");
+        return;
+      }
+  
+      if (this._topPlaceholder.domElement) {
+        this._topPlaceholder.domElement.innerHTML = `<style>button[name="Approve/Reject"] {display: none;}</style>`;
+      }
+    }
+  }
 }
+
