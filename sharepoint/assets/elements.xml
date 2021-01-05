@@ -4,6 +4,6 @@
         Title="HideApprovalControls"
         Location="ClientSideExtension.ApplicationCustomizer"
         ClientSideComponentId="f46883c1-6ecb-4127-b8f3-76ffdc93fcda"
-        ClientSideComponentProperties="{&quot;testMessage&quot;:&quot;Test message&quot;}">
+        ClientSideComponentProperties="{&quot;debugMessage&quot;:&quot;debug 1903&quot;}">
     </CustomAction>
 </Elements>

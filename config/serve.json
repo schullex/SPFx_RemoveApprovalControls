@@ -9,7 +9,7 @@
         "f46883c1-6ecb-4127-b8f3-76ffdc93fcda": {
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
-            "testMessage": "Test message"
+            "debugMessage": "debug message 1843"
           }
         }
       }
@@ -20,7 +20,7 @@
         "f46883c1-6ecb-4127-b8f3-76ffdc93fcda": {
           "location": "ClientSideExtension.ApplicationCustomizer",
           "properties": {
-            "testMessage": "Test message"
+            "debugMessage": "debug message 1844"
           }
         }
       }
