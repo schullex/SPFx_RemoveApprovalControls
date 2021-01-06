@@ -24,7 +24,7 @@ export default class HideApprovalControlsApplicationCustomizer
   public onInit(): Promise<void> {
     Log.info(LOG_SOURCE, `Initialized ${strings.Title}. Version is ${this.manifest.version}`);
 
-    // Comment in for debugging
+    // Comment in for debugging.
     // let message: string = this.properties.debugMessage;
     // Dialog.alert(`Debug ${strings.Title}:\n\n${message}`);
 
