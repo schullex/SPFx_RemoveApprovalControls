@@ -30,3 +30,6 @@ obj
 
 # Styles Generated Code
 *.scss.ts
+
+# contains sensitive accessKey
+config\deploy-azure-storage.json
