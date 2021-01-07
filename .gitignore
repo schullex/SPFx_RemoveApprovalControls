@@ -32,4 +32,4 @@ obj
 *.scss.ts
 
 # contains sensitive accessKey
-config\deploy-azure-storage.json
+config/deploy-azure-storage.json
