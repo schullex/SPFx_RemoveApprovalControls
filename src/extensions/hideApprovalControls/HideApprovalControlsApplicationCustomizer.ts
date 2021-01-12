@@ -25,7 +25,7 @@ export default class HideApprovalControlsApplicationCustomizer
     Log.info(LOG_SOURCE, `Initialized ${strings.Title}. Version is ${this.manifest.version}`);
 
     // Comment in for debugging.
-    
+
     // let message: string = this.properties.debugMessage;
     // Dialog.alert(`Debug ${strings.Title}:\n\n${message}`);
 
@@ -50,7 +50,7 @@ export default class HideApprovalControlsApplicationCustomizer
       }
   
       if (this._topPlaceholder.domElement) {
-        this._topPlaceholder.domElement.innerHTML = `<style>button[name="Approve/Reject"] {display: none;}</style>`;
+        this._topPlaceholder.domElement.innerHTML = '<style>button[data-automationid="approveRejectCommand"] {display: none;}</style>';
       }
     }
   }
