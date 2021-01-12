@@ -3,7 +3,7 @@
   "solution": {
     "name": "sp-fx-remove-approval-controls-client-side-solution",
     "id": "8f148078-cd12-468c-9a29-f8da376cc689",
-    "version": "1.0.0.14",
+    "version": "1.0.0.15",
     "includeClientSideAssets": false,
     "isDomainIsolated": false,
     "developer": {
@@ -18,7 +18,7 @@
         "title": "Application Extension - Deployment of custom action.",
         "description": "Deploys a custom action with ClientSideComponentId association",
         "id": "92517b04-148e-48de-975f-33449f126200",
-        "version": "1.0.0.14",
+        "version": "1.0.0.15",
         "assets": {
           "elementManifests": [
             "elements.xml"
